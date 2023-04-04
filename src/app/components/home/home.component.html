@@ -1,0 +1,9 @@
+<div class="flex gap-4 m-6">
+  <button class="px-8 py-2 bg-blue-700 text-2xl text-white rounded-md">Day</button>
+  <button class="px-8 py-2 bg-blue-700 text-2xl text-white rounded-md">Week</button>
+</div>
+<div class="h-96 bg-red-400 flex items-center overflow-auto">
+  <div class="h-72 aspect-[9/13] bg-green-100 m-4 rounded-xl shadow relative"  *ngFor="let movie of movie|async">
+  <img src="{{imageUrl}}/{{movie.poster_path}}" class="absolute inset-0 object-cover w-full h-full">
+  </div>
+</div>
