@@ -1,3 +1,25 @@
-<div class="w-full h-full bg-fuchsia-400">
-
+<div class="w-full h-full bg-gray-900 px-2">
+ <p class="text-red-600 text-2xl px-10 py-4">News Feed</p>
+<div class="flex flex-col text-2xl text-gray-100 h-1/3 border-b items-center">
+  <div class="flex h-12 w-44 items-center gap-4 justify-start">
+    <i class="fa-solid fa-globe"></i>
+      <p>Browse</p>
+  </div>
+  <div class="flex h-12 w-44 items-center justify-start gap-3">
+    <i class="fa-solid fa-heart"></i>
+      <p>Watchlist</p>
+  </div>
+  <div class="flex h-12 w-44 items-center justify-start gap-3 whitespace-nowrap">
+    <i class="fa-regular fa-calendar-days"></i>
+    <p>Coming Soon</p>
+  </div>
+</div>
+<p class="text-red-600 text-2xl px-10 py-4">Following</p>
+<div class="flex flex-col gap-4 text-white text-2xl items-center" *ngFor="let item of [1,2,3,4,5,6,7]">
+  <div class="flex h-12 w-44 items-center justify-start gap-4">
+    <a href="#" class="fa-solid fa-circle-user"></a>
+    <p>Sreehari</p>
+    <i class="fa-solid fa-arrow-down text-green-500"></i>
+  </div>
+</div>
 </div>

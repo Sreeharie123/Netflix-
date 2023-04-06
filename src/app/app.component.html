@@ -1,7 +1,5 @@
-<div class="h-screen w-screen flex">
-  <app-side-bar class="w-16"></app-side-bar>
-  <div  class="flex-col w-[calc(100vw-4rem)] bg-lime-300">
-    <app-nav-bar></app-nav-bar>
-    <router-outlet></router-outlet>
-  </div>
+<app-nav-bar></app-nav-bar>
+<div class="h-screen flex">
+  <app-side-bar class="max-md:hidden w-[15rem] cursor-progress transition-all delay-100"></app-side-bar>
+    <router-outlet class="flex-1 bg-gray-800"></router-outlet>
 </div>
