@@ -14,7 +14,6 @@ export class TMDBServiceService {
   api_key:string="5c22bcbd7888afb81b9c03765cba2dc5"
 
   trendingMovie(data:'day'|'week'):Observable<Movie[]>{
-
     return this.http.get <Movies> (`${this.base_url}/trending/all/${data}`,{
       params:{
         api_key:this.api_key
@@ -22,4 +21,5 @@ export class TMDBServiceService {
     }).pipe(map(res=>res.results))
 
   }
+
 }

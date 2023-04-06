@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<div class="h-screen w-screen flex">
+  <app-side-bar class="w-16"></app-side-bar>
+  <div  class="flex-col w-[calc(100vw-4rem)] bg-lime-300">
+    <app-nav-bar></app-nav-bar>
+    <router-outlet></router-outlet>
+  </div>
+</div>
