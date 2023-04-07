@@ -1,21 +1,83 @@
-<!-- <div class="flex gap-4 m-6 bg-fuchsia-600" *ngIf="$time|async as time">
-  <button class="px-8 py-2 bg-blue-700 text-2xl text-white rounded-md" (click)="onClick(time ==='week' ? 'day' : 'week')">{{time|titlecase}}</button>
-</div> -->
-<!-- <div class="h-96 w-[calc(100vw-4rem)] bg-red-400 flex items-center overflow-auto">
-  <div class="h-72 aspect-[9/13] bg-green-100 m-4 rounded-xl shadow relative"  *ngFor="let movie of movie|async">
-  <img src="{{imageUrl}}/{{movie.poster_path}}" class="absolute inset-0 object-cover w-full h-full">
+<div
+  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-[calc(100vh-4rem)] flex flex-col bg-gray-950 md:px-20 overflow-y-auto"
+  *ngIf="$time | async as time"
+>
+  <div
+    class="w-full h-1/2 md:rounded-b-2xl overflow-hidden relative transition-all"
+  >
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let movie of movie | async">
+        <ng-template class="slide" carouselSlide>
+          <img
+            src="{{ imageUrl }}/{{ movie.backdrop_path }}"
+            class="md:w-full md:h-[30rem] opacity-40"
+          />
+          <p
+            class="md:text-3xl text-xl font-bold text-red-600 md:absolute md:bottom-28 md:left-20 px-4 md:px-0"
+          >
+            {{ movie.title }}
+          </p>
+          <button
+            class="md:w-fit md:h-fit w-full px-8 py-3 text-xl font-bold text-white bg-red-600 md:rounded-xl md:absolute md:bottom-14 md:left-20"
+          >
+            Watch
+          </button>
+          <div
+            class="text-white font-bold absolute md:top-20 md:left-20 top-5 left-4 flex flex-col md:gap-2"
+          >
+            <p class="md:text-4xl text-2xl">Welcome</p>
+            <p class="md:text-3xl text-xl">
+              Millions of movies, TV shows and people to discover. Explore now.
+            </p>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
-</div> -->
 
+  <div class="w-full h-1/2 md:rounded-t-2xl">
+    <div class="w-fit h-fit flex items-center gap-4 md:pt-6 px-4 md:px-0">
+      <p class="text-xl font-bold text-white">Trending</p>
+      <button
+        class="text-gray-100 bg-gray-900 w-56 flex justify-between px-4 h-9 items-center rounded-full relative"
+        (click)="onClick(time === 'week' ? 'day' : 'week')"
+      >
+        <span class="z-30">Today</span>
+        <span class="z-30">This week</span>
+        <span
+          class="w-28 h-9 rounded-full absolute top-0 left-0 bg-red-600/75 transition-all"
+          [ngClass]="{ 'translate-x-28': time === 'week' }"
+        ></span>
+      </button>
+    </div>
 
-<div class=" md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-[calc(100vh-4rem)] flex flex-col bg-gray-800 md:px-20 md:py-8 md:gap-3" *ngIf="$time|async" >
+    <div
+      class="md:h-96 max-md:py-4 w-full flex items-center overflow-auto gap-4"
+    >
+      <div
+        class="h-72 aspect-[9/13] bg-green-100 rounded-xl shadow relative"
+        *ngFor="let movie of movie | async"
+      >
+        <img
+          src="{{ imageUrl }}/{{ movie.poster_path }}"
+          class="absolute inset-0 object-cover w-full h-full"
+        />
+      </div>
+    </div>
 
-  <div class="flex-1 bg-gray-900 rounded-2xl">
-
-
+    <div
+    class="md:h-96 max-md:py-4 w-full flex items-center overflow-auto gap-4"
+  >
+    <div
+      class="h-72 aspect-[9/13] bg-green-100 rounded-xl shadow relative"
+      *ngFor="let movie of movie | async"
+    >
+      <img
+        src="{{ imageUrl }}/{{ movie.poster_path }}"
+        class="absolute inset-0 object-cover w-full h-full"
+      />
+    </div>
   </div>
-
-  <div class="flex-1 bg-gray-900 rounded-2xl">
 
   </div>
 
