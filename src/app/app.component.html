@@ -1,5 +1,5 @@
-<app-nav-bar></app-nav-bar>
-<div class="h-screen flex">
-  <app-side-bar class="max-md:hidden w-[15rem] cursor-progress transition-all delay-100"></app-side-bar>
-    <router-outlet class="flex-1 bg-gray-800"></router-outlet>
+<app-nav-bar (newItemEvent)="onClick($event)"></app-nav-bar>
+<div class="h-[calc(100vh-4rem)] flex">
+  <app-side-bar class="md:w-[15rem]" [ngClass]="{'max-md:hidden':onTrue,'max-md:fixed':!onTrue ,'max-md:top-16':!onTrue,'z-50':!onTrue,'h-[calc(100vh-4rem)]':!onTrue}" (sideBar)="onClick($event)"></app-side-bar>
+    <router-outlet class="flex-1"></router-outlet>
 </div>

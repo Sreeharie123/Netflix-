@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.movie = this.tmdbService.trendingMovie('day')
+   this.movie = this.tmdbService.trendingMovie('week')
 
   }
 
