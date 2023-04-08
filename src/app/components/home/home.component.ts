@@ -25,11 +25,10 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
-  movie?:Observable<Movie[]>
+  movies?:Observable<Movie[]>
   currentTrend:interval='week'
 
-  $time = new BehaviorSubject<interval>(this.currentTrend);
+  $timeFilter = new BehaviorSubject<interval>(this.currentTrend);
 
   imageUrl:string="https://image.tmdb.org/t/p/w500/"
 
@@ -37,12 +36,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.movie = this.tmdbService.trendingMovie('week')
+   this.movies = this.$timeFilter.pipe(
+    switchMap(time=>this.tmdbService.trendingMovie(time))
+   )
 
   }
 
   onClick(data:interval){
-    this.$time.next(data)
+    this.$timeFilter.next(data)
   }
 
 
