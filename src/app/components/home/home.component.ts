@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, map, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, map, switchMap } from 'rxjs';
 import { Movie } from 'src/app/models/tmdb';
 import { TMDBServiceService } from 'src/app/services/tmdbservice.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -7,9 +7,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
@@ -17,36 +16,42 @@ export class HomeComponent implements OnInit {
     mouseDrag: true,
     pullDrag: false,
     dots: false,
-    autoplay:true,
+    autoplay: true,
     nav: false,
     responsive: {
       0: {
         items: 1,
-      }
-    }
-  }
-  movies?:Observable<Movie[]>
-  currentTrend:interval='week'
+      },
+    },
+  };
+  movies?: Observable<Movie[]>;
+  $timeFilter = new BehaviorSubject<timeInterval>('day');
+  $showFilter = new BehaviorSubject<showInterval>('movie');
 
-  $timeFilter = new BehaviorSubject<interval>(this.currentTrend);
+  $filter=combineLatest({
+    time:this.$timeFilter,
+    show:this.$showFilter
+  });
 
-  imageUrl:string="https://image.tmdb.org/t/p/w500/"
 
-  constructor(private tmdbService:TMDBServiceService){}
+  imageUrl: string = 'https://image.tmdb.org/t/p/w500/';
+
+  constructor(private tmdbService: TMDBServiceService) {}
 
   ngOnInit(): void {
-
-   this.movies = this.$timeFilter.pipe(
-    switchMap(time=>this.tmdbService.trendingMovie(time))
-   )
-
+    this.movies =this.$filter.pipe(switchMap(({time,show})=>{
+     return this.tmdbService.trendingMovie(time,show)
+    }))
   }
 
-  onClick(data:interval){
-    this.$timeFilter.next(data)
+  onTime(data: timeInterval) {
+    this.$timeFilter.next(data);
   }
 
-
+  onShow(data: showInterval) {
+    this.$showFilter.next(data);
+  }
 }
 
-type interval="day"|"week"
+type timeInterval = 'day' | 'week';
+type showInterval = 'tv' | 'movie';

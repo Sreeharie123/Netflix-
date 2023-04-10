@@ -13,8 +13,8 @@ export class TMDBServiceService {
   base_url:string='https://api.themoviedb.org/3/'
   api_key:string="5c22bcbd7888afb81b9c03765cba2dc5"
 
-  trendingMovie(data:'day'|'week'):Observable<Movie[]>{
-    return this.http.get <Movies> (`${this.base_url}/trending/all/${data}`,{
+  trendingMovie(data:'day'|'week',show:'tv'|'movie'):Observable<Movie[]>{
+    return this.http.get <Movies> (`${this.base_url}/trending/${show}/${data}`,{
       params:{
         api_key:this.api_key
       }
