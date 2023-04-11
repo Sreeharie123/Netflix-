@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie, Movies } from '../models/tmdb';
 import { Observable, map } from 'rxjs';
+import { User, Users } from '../models/users';
+import { PopularMovies, popular } from '../models/popular';
+// import { PopularMovies, popularMovie } from '../models/popular';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +25,16 @@ export class TMDBServiceService {
 
   }
 
+  users(){
+    return this.http.get<Users>('https://dummyjson.com/users').pipe(map(res=>res.users))
+  }
+
+  popularMovie():Observable<popular[]>{
+    return this.http.get <PopularMovies>(`${this.base_url}/movie/popular`,{
+      params:{
+        api_key:this.api_key
+      }
+    }).pipe(map(res=>res.results))
+
+  }
 }

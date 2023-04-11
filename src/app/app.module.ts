@@ -9,12 +9,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    SideBarComponent
+    SideBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

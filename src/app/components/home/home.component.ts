@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest, map, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  combineLatest,
+  map,
+  switchMap,
+} from 'rxjs';
 import { Movie } from 'src/app/models/tmdb';
 import { TMDBServiceService } from 'src/app/services/tmdbservice.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { popular } from 'src/app/models/popular';
 
 @Component({
   selector: 'app-home',
@@ -24,24 +31,28 @@ export class HomeComponent implements OnInit {
       },
     },
   };
-  movies?: Observable<Movie[]>;
+  TrendingMovies?: Observable<Movie[]>;
+  PopularMovies?: Observable<popular[]>;
   $timeFilter = new BehaviorSubject<timeInterval>('day');
   $showFilter = new BehaviorSubject<showInterval>('movie');
 
-  $filter=combineLatest({
-    time:this.$timeFilter,
-    show:this.$showFilter
+  $filter = combineLatest({
+    time: this.$timeFilter,
+    show: this.$showFilter,
   });
-
 
   imageUrl: string = 'https://image.tmdb.org/t/p/w500/';
 
   constructor(private tmdbService: TMDBServiceService) {}
 
   ngOnInit(): void {
-    this.movies =this.$filter.pipe(switchMap(({time,show})=>{
-     return this.tmdbService.trendingMovie(time,show)
-    }))
+    this.TrendingMovies = this.$filter.pipe(
+      switchMap(({ time, show }) => {
+        return this.tmdbService.trendingMovie(time, show);
+      })
+    );
+
+    this.PopularMovies = this.tmdbService.popularMovie();
   }
 
   onTime(data: timeInterval) {
