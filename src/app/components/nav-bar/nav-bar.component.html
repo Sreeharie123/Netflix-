@@ -4,7 +4,7 @@
     <a class="fa-solid fa-bars text-3xl text-white md:hidden" (click)="onClick(onTrue)"></a>
     <p class="text-red-600 text-2xl font-bold"><span class="text-3xl">N</span>et<span class="text-3xl">P</span>rime</p>
   <div class="relative w-fit h-fit text-white max-md:hidden">
-    <input type="text" class="h-10 w-96 rounded-full bg-gray-900 border border-gray-700 shadow pl-10">
+    <input type="text" class="h-10 w-96 rounded-full bg-gray-900 border border-gray-700 shadow pl-10" [(ngModel)]="search" >
     <i class="fa-solid fa-magnifying-glass absolute top-3 left-3"></i>
     <div class="absolute top-2 right-3">
       <svg xmlns="http://www.w3.org/2000/svg"fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

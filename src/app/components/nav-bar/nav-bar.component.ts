@@ -7,7 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class NavBarComponent {
 
-  onTrue:boolean=false
+  onTrue:boolean=false;
+  search?:string;
 
   @Output() newItemEvent = new EventEmitter<boolean>();
 

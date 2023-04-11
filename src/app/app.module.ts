@@ -10,13 +10,16 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
+import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
     SideBarComponent,
-    FooterComponent
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     NgImageSliderModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
 
   ],
   providers: [],

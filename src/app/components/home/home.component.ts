@@ -29,6 +29,12 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      50: {
+        items: 1,
+      },
+      100: {
+        items: 1,
+      },
     },
   };
   TrendingMovies?: Observable<Movie[]>;
@@ -42,6 +48,7 @@ export class HomeComponent implements OnInit {
   });
 
   imageUrl: string = 'https://image.tmdb.org/t/p/w500/';
+  imageUrl1: string = 'https://image.tmdb.org/t/p/original/';
 
   constructor(private tmdbService: TMDBServiceService) {}
 
