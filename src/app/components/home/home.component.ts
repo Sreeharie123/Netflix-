@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   PopularMovies?: Observable<popular[]>;
   $timeFilter = new BehaviorSubject<timeInterval>('day');
   $showFilter = new BehaviorSubject<showInterval>('movie');
+  math = Math;
 
   $filter = combineLatest({
     time: this.$timeFilter,
@@ -69,6 +70,22 @@ export class HomeComponent implements OnInit {
   onShow(data: showInterval) {
     this.$showFilter.next(data);
   }
+
+
+
+ratingcolor2(rate:number){
+  if(rate >= 70 ) return "#204529";
+  if(rate >= 50 ) return "#423d0f";
+  if(rate <= 49 ) return "#571435";
+  return "none"
+}
+
+ratingcolor(rate:number){
+  if(rate >= 70 ) return "#21d07a";
+  if(rate >= 50 ) return "#d2d531";
+  if(rate <= 49 ) return "#db2360";
+  return "none"
+}
 }
 
 type timeInterval = 'day' | 'week';

@@ -1,16 +1,45 @@
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap -m-4">
-      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a class="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
-        </a>
-        <div class="mt-4">
-          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-          <p class="mt-1">$16.00</p>
+<div class="mainContainer md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen md:gap-6 flex md:p-16 p-4 bg-gray-950 flex-wrap overflow-auto" *ngIf="$searchValue">
+
+  <div *ngFor="let movie of $searchValue|async as searchValue">
+    <div
+      class="md:w-72 w-[calc(100vw-2rem)] aspect-[3.5/4] overflow-hidden rounded-xl flex flex-col"
+    >
+      <img *ngIf="movie.poster_path"
+        src="{{imageUrl}}/{{movie.poster_path}}"
+        class="w-full h-[60%] object-cover"
+      />
+      <img *ngIf="movie.poster_path === null"
+      src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      class="w-full h-[60%] object-cover"
+    />
+      <div
+        class="rounded-lg h-[40%] p-2 bg-gradient-to-r from-indigo-800 via-gray-900 to-gray-900 flex flex-col shadow-2xl"
+      >
+        <div>
+          <h5
+            class="text-white text-2xl font-bold leading-none h-12 text-ellipsis overflow-hidden"
+          >
+            {{movie.title}}
+          </h5>
+          <span class="text-xs text-gray-400 leading-none"
+            >Rating-{{movie.popularity}}</span
+          >
+        </div>
+        <div class="w-full flex items-center justify-between">
+          <div class="text-lg text-white font-light">
+            {{ movie.release_date }}
+          </div>
+          <div
+            class="relative text-white font-bold"
+          >
+          <p class="absolute top-3 right-2">{{math.floor(movie.vote_average*10)}}%</p>
+          <svg class="rotate-[-90deg]" width="47px" height="47px" viewBox="0 0 100 100">
+            <circle cx="52.5" cy="52.5" r="50" fill="transparent" [attr.stroke]="ratingcolor2(movie.vote_average*10)" [attr.stroke-dasharray] = "314" stroke-width="9" class="scale-[0.95]"/>
+          <circle cx="52.5" cy="52.5" r="50" fill="transparent" [attr.stroke]="ratingcolor(movie.vote_average*10)" [attr.stroke-dashoffset] = "(3.14*(100-movie.vote_average*10))" [attr.stroke-dasharray] = "314" stroke-width="9" stroke-linecap="round" class="scale-[0.95]"/>
+          </svg>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
