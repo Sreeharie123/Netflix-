@@ -1,4 +1,4 @@
-<div class="mainContainer md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen md:gap-6 flex md:p-16 p-4 bg-gray-950 flex-wrap overflow-auto" *ngIf="$searchValue">
+<div class="mainContainer md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen md:gap-6 gap-3 flex md:p-16 p-4 bg-gray-950 flex-wrap overflow-auto" *ngIf="$searchValue">
 
   <div *ngFor="let movie of $searchValue|async as searchValue">
     <div
@@ -43,3 +43,5 @@
     </div>
   </div>
 </div>
+
+

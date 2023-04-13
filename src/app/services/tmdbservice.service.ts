@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { User, Users } from '../models/users';
 import { PopularMovies, popular } from '../models/popular';
 import { Search, searchMovie } from '../models/search';
+import { MovieDetails } from '../models/movie-details';
 // import { PopularMovies, popularMovie } from '../models/popular';
 
 @Injectable({
@@ -16,9 +17,11 @@ export class TMDBServiceService {
 
   base_url:string='https://api.themoviedb.org/3/'
   api_key:string="5c22bcbd7888afb81b9c03765cba2dc5"
+  showdetails?:'week'|'day';
 
   // -----------------------------------------------------------------TrendingMovie-------------------------------------------------------------------------------
   trendingMovie(data:'day'|'week',show:'tv'|'movie'):Observable<Movie[]>{
+         this.showdetails=data
     return this.http.get <Movies> (`${this.base_url}/trending/${show}/${data}`,{
       params:{
         api_key:this.api_key
@@ -52,6 +55,15 @@ searchMovie(searchMovie:any):Observable<searchMovie[]>{
     }
   }).pipe(map(res=>res.results))
 
+}
+
+
+movieDetails(id:string,show:'movie'|'tv'):Observable<MovieDetails>{
+ return this.http.get<MovieDetails>(`${this.base_url}/${show}/${id}`,{
+    params:{
+      api_key:this.api_key
+    }
+  }).pipe(map(res=>res))
 }
 
 }

@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { DetailsComponent } from './components/details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     NavBarComponent,
     SideBarComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
