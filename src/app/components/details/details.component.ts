@@ -35,7 +35,7 @@ export class DetailsComponent implements OnInit{
 
   ngOnInit(): void {
 
-this.$movieDetails=this.route.params.pipe(switchMap((parmas=>this.tmdbService.movieDetails(parmas['id'],'movie'))))
+this.$movieDetails=this.route.params.pipe(switchMap((parmas=>this.tmdbService.movieDetails(parmas['id'],parmas['show']))))
 
 this.$movieDetails.subscribe(console.log)
 
