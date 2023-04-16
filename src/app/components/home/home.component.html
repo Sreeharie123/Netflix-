@@ -171,7 +171,7 @@
       >
         <div *ngFor="let movie of PopularMovies | async">
           <div
-            [routerLink]="['/details',filter.show,movie.id]"
+            [routerLink]="['/details','movie',movie.id]"
             class="w-72 h-[22.5rem] overflow-hidden rounded-xl flex flex-col"
           >
             <img
