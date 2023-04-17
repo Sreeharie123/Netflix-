@@ -23,8 +23,9 @@ onSubmit(){
   const { username, password } = this.loginForm.value;
   this.auth.login(username,password).subscribe({
     next:(res)=>{this.tostr.success("Login Successfully")
-    console.log(res)
     this.route.navigate(['/home',res])
+console.log(res)
+
   },
     error:(err)=>this.tostr.error(err.error.message)
   })

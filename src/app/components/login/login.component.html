@@ -1,8 +1,8 @@
 <div
-  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-screen grid place-content-center"
+  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-screen grid md:place-content-center"
 >
   <div
-    class="w-[28rem] h-96 border flex flex-col gap-4 rounded-xl bg-[#264eca] p-12"
+    class="md:w-[28rem] md:h-96 border flex flex-col gap-4 md:rounded-xl bg-[#264eca] p-12"
   >
     <p class="font-black text-3xl text-white">LogIn</p>
     <form class="w-full flex flex-col gap-4" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">

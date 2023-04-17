@@ -19,7 +19,10 @@
   <div *ngFor="let user of users|async">
     <div class="flex h-12 w-44 items-center justify-start md:gap-4 gap-2 cursor-pointer">
       <!-- <a href="#" class="fa-solid fa-circle-user"></a> -->
-      <img src="{{user.image}}" class="w-12 h-10 rounded-full">
+      <!-- <img src="{{user.image}}" class="w-12 h-10 rounded-full"> -->
+      <img
+  src="https://api.dicebear.com/6.x/initials/svg?seed={{user.firstName}}" class="w-10 rounded-full"
+  alt="avatar" />
       <p>{{user.firstName}}</p>
     </div>
   </div>

@@ -18,10 +18,14 @@
     </div>
   </div>
 
-  <div class="flex gap-3 text-2xl text-white">
+  <div class="flex gap-3 text-2xl text-white items-center" *ngIf="imageValue|async">
     <a href="#" class="fa-solid fa-comment-dots"></a>
     <a href="#" class="fa-solid fa-bell"></a>
-    <a href="#" class="fa-solid fa-circle-user" routerLink="/login"></a>
+    <!-- <a href="#" class="fa-solid fa-circle-user" routerLink="/login"></a> -->
+    <!-- <img src="{{imageValue.value.image}}" class="w-8 h-8 rounded-full object-cover"> -->
+    <img
+    src="https://api.dicebear.com/6.x/initials/svg?seed=shahil" class="w-10 rounded-full" routerLink="/login"
+    alt="avatar" />
   </div>
 
 </div>

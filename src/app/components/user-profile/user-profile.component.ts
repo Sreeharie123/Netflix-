@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent {
+
+   userData:any
+  constructor(private route:ActivatedRoute){
+ this.userData=this.route.params
+
+ console.log(this.userData)
+  }
 
 }
