@@ -3,7 +3,6 @@ import {
   BehaviorSubject,
   Observable,
   combineLatest,
-  map,
   switchMap,
 } from 'rxjs';
 import { Movie } from 'src/app/models/tmdb';

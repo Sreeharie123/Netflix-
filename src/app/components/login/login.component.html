@@ -1,0 +1,16 @@
+<div
+  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-screen grid place-content-center"
+>
+  <div
+    class="w-[28rem] h-96 border flex flex-col gap-4 rounded-xl bg-[#264eca] p-12"
+  >
+    <p class="font-black text-3xl text-white">LogIn</p>
+    <form class="w-full flex flex-col gap-4" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" class="bg-white w-full rounded-md py-3" formControlName="username" />
+      <input type="password" class="bg-white w-full rounded-md py-3" minlength="6" formControlName="password" />
+      <button class="bg-black py-3 rounded-md font-bold text-white">
+        LogIn
+      </button>
+    </form>
+  </div>
+</div>

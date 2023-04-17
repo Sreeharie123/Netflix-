@@ -21,7 +21,7 @@ export class TMDBServiceService {
 
   // -----------------------------------------------------------------TrendingMovie-------------------------------------------------------------------------------
   trendingMovie(data:'day'|'week',show:'tv'|'movie'):Observable<Movie[]>{
-         this.showdetails=data
+    this.showdetails=data
     return this.http.get <Movies> (`${this.base_url}/trending/${show}/${data}`,{
       params:{
         api_key:this.api_key

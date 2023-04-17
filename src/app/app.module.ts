@@ -11,8 +11,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './components/details/details.component';
+import { LoginComponent } from './components/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,9 @@ import { DetailsComponent } from './components/details/details.component';
     SideBarComponent,
     FooterComponent,
     SearchComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoginComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,9 @@ import { DetailsComponent } from './components/details/details.component';
     NgImageSliderModule,
     CarouselModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [],
