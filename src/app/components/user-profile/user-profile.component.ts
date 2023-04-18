@@ -12,8 +12,6 @@ export class UserProfileComponent {
    userData:any
   constructor(private route:ActivatedRoute){
  this.userData=this.route.params
-
- console.log(this.userData)
   }
 
 }
