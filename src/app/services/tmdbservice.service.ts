@@ -18,7 +18,6 @@ export class TMDBServiceService {
   base_url:string='https://api.themoviedb.org/3/'
   api_key:string="5c22bcbd7888afb81b9c03765cba2dc5"
   showdetails?:'week'|'day';
-
   // -----------------------------------------------------------------TrendingMovie-------------------------------------------------------------------------------
   trendingMovie(data:'day'|'week',show:'tv'|'movie'):Observable<Movie[]>{
     this.showdetails=data
@@ -29,7 +28,6 @@ export class TMDBServiceService {
     }).pipe(map(res=>res.results))
 
   }
-
   // -----------------------------------------------------------------User-------------------------------------------------------------------------------
   users(){
     return this.http.get<Users>('https://dummyjson.com/users').pipe(map(res=>res.users))
@@ -44,7 +42,6 @@ export class TMDBServiceService {
     }).pipe(map(res=>res.results))
 
   }
-
   // -----------------------------------------------------------------SearchMovie-------------------------------------------------------------------------------
 
 searchMovie(searchMovie:any):Observable<searchMovie[]>{
@@ -56,8 +53,7 @@ searchMovie(searchMovie:any):Observable<searchMovie[]>{
   }).pipe(map(res=>res.results))
 
 }
-
-
+// -----------------------------------------------------------------movieDetails-------------------------------------------------------------------------------
 movieDetails(id:string,show:'movie'|'tv'):Observable<MovieDetails>{
  return this.http.get<MovieDetails>(`${this.base_url}/${show}/${id}`,{
     params:{
@@ -65,5 +61,12 @@ movieDetails(id:string,show:'movie'|'tv'):Observable<MovieDetails>{
     }
   }).pipe(map(res=>res))
 }
-
+// -----------------------------------------------------------------UpComingMovie-------------------------------------------------------------------------------
+UpcomingMovie(data:string){
+  return this.http.get<any>(`${this.base_url}/movie/${data}`,{
+    params:{
+      api_key:this.api_key
+    }
+  }).pipe(map(res=>res.results))
+}
 }

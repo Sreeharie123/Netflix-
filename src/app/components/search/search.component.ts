@@ -13,13 +13,19 @@ export class SearchComponent implements OnInit {
   math = Math;
   $searchValue?:Observable<searchMovie[]>;
   imageUrl: string = 'https://image.tmdb.org/t/p/w500/';
+  switch:boolean=false
   constructor(private route:ActivatedRoute,private tmdbSercive:TMDBServiceService){}
   ngOnInit(): void {
 
+  this.route.params.subscribe(val=>{
+    if(val['id'] == "undefined"){
+      this.switch = true
+      console.log(val)
+      }else{
+        this.$searchValue=this.route.params.pipe(switchMap(params=>this.tmdbSercive.searchMovie(params['id'])))
 
-  this.$searchValue=this.route.params.pipe(switchMap(params=>this.tmdbSercive.searchMovie(params['id'])))
-
-     this.$searchValue.subscribe(console.log)
+      }
+  })
 
   }
 

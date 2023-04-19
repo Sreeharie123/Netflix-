@@ -11,6 +11,7 @@ import { TMDBServiceService } from 'src/app/services/tmdbservice.service';
 export class SideBarComponent implements OnInit {
 
   users?:Observable<User[]>;
+  upComming:any
 
   onSide:boolean=true
   @Output() sideBar = new EventEmitter<boolean>();
@@ -25,5 +26,7 @@ export class SideBarComponent implements OnInit {
 ngOnInit(): void {
   this.users= this.tmdbSerevice.users()
 }
-
+onUpcoming(){
+ this.upComming=this.tmdbSerevice.UpcomingMovie('upcoming')
+}
 }

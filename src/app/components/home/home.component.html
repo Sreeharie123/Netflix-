@@ -1,5 +1,5 @@
 <div
-  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-screen overflow-auto bg-gray-950 md:px-12 px-1 bg-gradient-to-r from-indigo-950 via-slate-950 to-indigo-950"
+  class="md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen h-screen overflow-auto bg-gray-950 md:px-4 px-1 bg-gradient-to-r from-indigo-950 via-slate-950 to-indigo-950 mt-24 md:mt-16"
   *ngIf="{
     time: $timeFilter | async,
     show: $showFilter | async
@@ -44,7 +44,7 @@
 
     <div class="w-full h-1/2 md:rounded-t-2xl flex flex-col gap-4">
       <div
-        class="md:w-fit md:h-fit w-full h-fit flex items-center gap-4 md:pt-4 px-4 md:px-0 py-2 md:py-0 overflow-auto"
+        class="md:w-fit md:h-fit w-full h-fit flex items-center gap-4 md:pt-4 px-4 md:px-0 py-2 md:py-1 overflow-auto"
       >
         <p
           class="md:text-xl text-lg font-bold text-white border-b-4 border-red-600"
@@ -52,16 +52,16 @@
           Trending
         </p>
         <button
-          class="text-gray-100 bg-gray-950 md:w-56 w-48 flex justify-between px-4 h-9 items-center rounded-full font-bold relative"
+          class="text-gray-100 bg-gray-950 md:w-56 w-44 flex justify-between px-4 h-9 items-center rounded-full font-bold relative"
           (click)="onTime(filter.time === 'week' ? 'day' : 'week')"
         >
           <span class="z-30">Today</span>
           <span class="z-30">This week</span>
           <span
-            class="md:w-28 w-24 h-9 rounded-full absolute top-0 left-0 bg-purple-600/75 transition-all"
+            class="md:w-28 w-[5.5rem] h-9 rounded-full absolute top-0 left-0 bg-purple-600/75 transition-all"
             [ngClass]="{
               'md:translate-x-28': filter.time === 'week',
-              'translate-x-24': filter.time === 'week'
+              'translate-x-[5.3rem]': filter.time === 'week'
             }"
           ></span>
         </button>
@@ -74,7 +74,7 @@
       </div>
 
       <div
-        class="md:h-96 max-md:py-4 w-full flex items-center overflow-auto gap-6"
+        class="md:h-96 w-full flex items-center overflow-auto gap-6"
       >
         <div *ngFor="let movie of TrendingMovies | async">
           <div

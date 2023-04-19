@@ -1,7 +1,7 @@
-<div class="mainContainer md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen md:gap-6 gap-3 flex md:p-16 p-4 bg-gray-950 flex-wrap overflow-auto" *ngIf="$searchValue">
+<div class="mainContainer md:w-[calc(100vw-15rem)] md:h-[calc(100vh-4rem)] w-screen md:gap-6 gap-3 flex md:p-16 p-4 bg-gray-950 flex-wrap overflow-auto mt-16">
 
   <div *ngFor="let movie of $searchValue|async as searchValue">
-    <div
+    <div *ngIf="!switch"  [routerLink]="['/details','movie',movie.id]"
       class="md:w-72 w-[calc(100vw-2rem)] aspect-[3.5/4] overflow-hidden rounded-xl flex flex-col"
     >
       <img *ngIf="movie.poster_path"
@@ -42,6 +42,12 @@
       </div>
     </div>
   </div>
+  <div *ngIf="switch" class="w-full md:h-full h-[calc(100vh-10rem)] p-1 md:p-16 flex flex-col justify-start items-center md:gap-24 bg-black mt-16">
+    <img class="h-[60%] w-[60%] md:h-1/2 md:w-1/2 object-contain" src="https://drudesk.com/sites/default/files/2018-02/404-error-page-not-found.jpg" alt="">
+    <p class="text-text-color text-2xl md:text-4xl lg:text-5xl mt-8 md:mt-0 font-medium text-center text-white">Sorry... No Result Found <br> Try Something Else </p>
+    <span class="h-[0.1px] w-[45%] mt-4 md:-mt-14 bg-white "></span>
+    </div>
+
 </div>
 
 
