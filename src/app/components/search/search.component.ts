@@ -18,9 +18,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
 
   this.route.params.subscribe(val=>{
-    if(val['id'] == "undefined"){
+    if(val['id'] == 'null'){
       this.switch = true
-      console.log(val)
       }else{
         this.$searchValue=this.route.params.pipe(switchMap(params=>this.tmdbSercive.searchMovie(params['id'])))
 

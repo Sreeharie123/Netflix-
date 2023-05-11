@@ -89,3 +89,11 @@ ratingcolor(rate:number){
 
 type timeInterval = 'day' | 'week';
 type showInterval = 'tv' | 'movie';
+
+
+
+
+
+
+
+

@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="switch" class="w-full md:h-full h-[calc(100vh-10rem)] p-1 md:p-16 flex flex-col justify-start items-center md:gap-24 bg-black mt-16">
+  <div *ngIf="switch || ($searchValue|async)?.length == 0" class="w-full md:h-full h-[calc(100vh-10rem)] p-1 md:p-16 flex flex-col justify-start items-center md:gap-24 bg-black mt-16">
     <img class="h-[60%] w-[60%] md:h-1/2 md:w-1/2 object-contain" src="https://drudesk.com/sites/default/files/2018-02/404-error-page-not-found.jpg" alt="">
     <p class="text-text-color text-2xl md:text-4xl lg:text-5xl mt-8 md:mt-0 font-medium text-center text-white">Sorry... No Result Found <br> Try Something Else </p>
     <span class="h-[0.1px] w-[45%] mt-4 md:-mt-14 bg-white "></span>
